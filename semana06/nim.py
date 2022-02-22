@@ -1,5 +1,3 @@
-import time
-
 def main():
     print("Bem-vindo ao jogo do NIM!")
     print("1 - para jogar uma partida isolada")
