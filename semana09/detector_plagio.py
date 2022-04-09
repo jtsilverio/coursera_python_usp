@@ -6,7 +6,7 @@ def main():
     textos = le_textos()
     infectado = avalia_textos(textos, ass_cp)
 
-    print("O autor do texto", infectado, "está infectado com COH-PIA")
+    print("O autor do texto", infectado, "está provavelmente infectado com COH-PIA")
     
 def le_assinatura():
     '''A funcao le os valores dos tracos linguisticos do modelo e devolve uma assinatura a ser comparada com os textos fornecidos'''
