@@ -4,17 +4,10 @@ import statistics
 def main():
     ass_cp = le_assinatura() # threshold para grau de similaridade
     textos = le_textos()
-    avalia_textos(textos, ass_cp)
+    infectado = avalia_textos(textos, ass_cp)
 
-    print(assinatura)
-
-def wal(texto):
-    '''Calcula o tamanho médio das palavras de uma lista de palavras'''
-    palavras = separa_palavras()
-
-    return
-
-
+    print("O autor do texto", infectado, "está infectado com COH-PIA")
+    
 def le_assinatura():
     '''A funcao le os valores dos tracos linguisticos do modelo e devolve uma assinatura a ser comparada com os textos fornecidos'''
     print("\nBem-vindo ao detector automático de COH-PIAH.")
@@ -85,8 +78,14 @@ def n_palavras_diferentes(lista_palavras):
     return len(freq)
 
 def compara_assinatura(as_a, as_b):
-    '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
-    pass
+    '''Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
+    abs_diff = []
+    for i in range(len(as_a)):
+        abs_diff.append(abs(as_a[i] - as_b[i]))
+    
+    similaridade = sum(abs_diff)/len(as_a)
+    
+    return similaridade
 
 def calcula_assinatura(texto):
     '''Essa funcao recebe um texto e deve devolver a assinatura do texto:
@@ -119,13 +118,13 @@ def calcula_assinatura(texto):
 
 def avalia_textos(textos, ass_cp):
     '''Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
-    for texto in textos:
-        ass_texto = calcula_assinatura(texto)
     
+    similaridades = []
+    for i in range(len(textos)):
+        ass_texto = calcula_assinatura(textos[i])
+        similaridades.append(compara_assinatura(ass_texto, ass_cp))
     
-
-    
-    return
+    maior_similariade = min(range(len(similaridades)), key=similaridades.__getitem__)
+    return maior_similariade + 1
 
 main()
-
